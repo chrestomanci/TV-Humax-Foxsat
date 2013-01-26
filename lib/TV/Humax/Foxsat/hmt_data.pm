@@ -1,10 +1,11 @@
 #!/usr/bin/perl
-package TV::Humax::hmt_data;
+package TV::Humax::Foxsat::hmt_data;
 
 use namespace::autoclean;
 use DateTime;
 use Moose;
 use Moose::Util::TypeConstraints;
+use TV::Humax::Foxsat::epg_data;
 
 use Trait::Attribute::Derived Unpack => {
     source    => 'rawDataBlock',
@@ -175,7 +176,7 @@ has 'EPG_Block_count' => (
 
 has 'EPG_blocks' => (
     is          =>  'ro',
-    isa         =>  'ArrayRef[TV::Humax::epg_data]',
+    isa         =>  'ArrayRef[TV::Humax::Foxsat::epg_data]',
     lazy_build  =>  1,
 );
 
@@ -186,11 +187,12 @@ sub raw_from_file
 {
     my $self = shift @_;
     my $src_file = shift;
+    my $file_size = -s $src_file;
 
     # Read the data into a memory buffer
     open SRC, '<', $src_file or die("Error reading from $src_file $!");
     my $raw_buff = undef;
-    my $bytes_read = sysread SRC, $raw_buff, 10_000, 0;
+    my $bytes_read = sysread SRC, $raw_buff, $file_size, 0;
     close SRC;
 
     $self->rawDataBlock($raw_buff);
@@ -207,7 +209,7 @@ sub _build_EPG_blocks
 
     for( my $block_num=0; $block_num < $self->EPG_Block_count(); $block_num++ )
     {
-        my $nextBlock = TV::Humax::epg_data->new();
+        my $nextBlock = TV::Humax::Foxsat::epg_data->new();
         $nextBlock->rawEPGBlock( substr $epg_blocks, 0, 544 );
         my $remainder = substr $epg_blocks, 544;
         my $guide_block_len = unpack('@2  n',   $remainder ); 

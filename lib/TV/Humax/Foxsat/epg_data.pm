@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-package TV::Humax::epg_data;
+package TV::Humax::Foxsat::epg_data;
 
 use namespace::autoclean;
 use DateTime;
