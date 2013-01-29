@@ -12,6 +12,7 @@ use Trait::Attribute::Derived Unpack => {
     fields    => { 'unpacker' => 'Str' },
     processor => sub {
         my ($self, $value, $fields) = @_;
+        defined $value or die "Error rawDataBlock not defined";
         return unpack( $fields->{'unpacker' }, $value)
     },
 };
