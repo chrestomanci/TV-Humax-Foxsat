@@ -71,9 +71,6 @@ has 'guideFlag' => (
 has 'guideBlockLen' => (
     is       => 'rw', 
     isa      => 'Int',
-    source    => 'rawGuideBlock',
-    traits   => [ Unpack ],
-    unpacker => '@2 n',
 );
 
 # All done 

@@ -213,7 +213,8 @@ sub _build_EPG_blocks
         my $nextBlock = TV::Humax::Foxsat::epg_data->new();
         $nextBlock->rawEPGBlock( substr $epg_blocks, 0, 544 );
         my $remainder = substr $epg_blocks, 544;
-        my $guide_block_len = unpack('@2  n',   $remainder ); 
+        my $guide_block_len = unpack('@2  n',   $remainder );
+        $nextBlock->guideBlockLen( $guide_block_len );
         $nextBlock->rawGuideBlock( substr($remainder, 4+$guide_block_len) );
         $epg_blocks = substr $epg_blocks, 544+4+$guide_block_len;
         push @retList, $nextBlock;
