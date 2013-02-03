@@ -17,6 +17,7 @@ WriteMakefile(
         'DateTime'                      => 0,
         'Moose'                         => 0,
         'Moose::Util::TypeConstraints'  => 0,
+        'Trait::Attribute::Derived.pm'  => 0,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'TV-Humax-Foxsat-*' },
