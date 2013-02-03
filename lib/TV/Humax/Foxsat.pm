@@ -6,7 +6,7 @@ use warnings;
 
 =head1 NAME
 
-TV::Humax::Foxsat - The great new TV::Humax::Foxsat!
+TV::Humax::Foxsat - Parse metadata files from your Humax satellite TV receiver.
 
 =head1 VERSION
 
@@ -19,23 +19,30 @@ our $VERSION = '0.01';
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+  use TV::Humax::Foxsat::hmt_data;
 
-Perhaps a little code snippet.
+  my $hmt_data = new TV::Humax::Foxsat::hmt_data();
+  $hmt_data->raw_from_file('/path/to/TV Show_20121007_2159.hmt');
+  
+  printf "Recording %s ran from %s till %s on %s (channel %d).\n",
+    $hmt_data->progName,
+    $hmt_data->startTime,
+    $hmt_data->endTime,
+    $hmt_data->ChanNameEPG,
+    $hmt_data->ChanNum;
 
-    use TV::Humax::Foxsat;
+  my @epg_records = @{ $hmt_data->EPG_blocks() };
+  my $epg_block = pop @epg_records;
+  
+  printf "The last show in the recording was of %s starting at %s for %d minutes.\n",
+    $epg_block->progName,
+    $epg_block->startTime,
+    ( $epg_block1->duration / 60 );
 
-    my $foo = TV::Humax::Foxsat->new();
-    ...
-
-=head1 EXPORT
-
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
-
-=head1 SUBROUTINES/METHODS
-
-=head2 function1
+  printf "The show description is %s\n", $epg_block->guideInfo;
+  
+NB: There is no support for modifying and saving hmt data files.
+You should treat the fields as read only.
 
 =cut
 
@@ -56,18 +63,16 @@ sub function2 {
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-tv-humax-foxsat at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=TV-Humax-Foxsat>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
+the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=TV-Humax-Foxsat>.  
+I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
 
-
-
+I would also be interested in any suggestions for improvement you might have.
 
 =head1 SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
     perldoc TV::Humax::Foxsat
-
 
 You can also look for information at:
 
@@ -93,7 +98,6 @@ L<http://search.cpan.org/dist/TV-Humax-Foxsat/>
 
 
 =head1 ACKNOWLEDGEMENTS
-
 
 =head1 LICENSE AND COPYRIGHT
 
