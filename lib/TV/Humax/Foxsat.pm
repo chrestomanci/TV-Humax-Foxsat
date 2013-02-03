@@ -106,15 +106,11 @@ L<http://search.cpan.org/dist/TV-Humax-Foxsat/>
 
 =back
 
-
-=head1 ACKNOWLEDGEMENTS
-
 =head1 LICENSE AND COPYRIGHT
 
 Copyright 2013 "spudsoup".
 
 This program is released under the following license: gpl --verbose
-
 
 =cut
 
