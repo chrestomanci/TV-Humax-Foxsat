@@ -128,7 +128,7 @@ has 'Subtitles' => (
     isa      => 'Bool',
     traits   => [ Unpack ],
     unpacker => '@1037 c',
-    postprocessor   =>  sub { return !!( $_ & 0xFF ) },
+    postprocessor   =>  sub { return ( $_ == 0x1F ) },
 );
 
 has 'AudioType' => (
