@@ -4,11 +4,13 @@ lib/TV/Humax/Foxsat/epg_data.pm
 lib/TV/Humax/Foxsat/hmt_data.pm
 Makefile.PL
 MANIFEST			This list of files
+MANIFEST.SKIP
+MYMETA.json
+MYMETA.yml
 README
-ignore.txt
 t/00-load.t
-t/manifest.t
 t/01-hmt_data.t
 t/02-epg_data.t
 t/boilerplate.t
-t/Downton_Abbey_20121007_2159.hmt   # An example data file to run the tests with.
+t/Downton_Abbey_20121007_2159.hmt	# An example data file to run the tests with.
+t/manifest.t
