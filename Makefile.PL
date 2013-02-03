@@ -14,6 +14,7 @@ WriteMakefile(
     PL_FILES            => {},
     PREREQ_PM => {
         'Test::More'                    => 0,
+        'Test::Most'                    => 0,
         'DateTime'                      => 0,
         'Moose'                         => 0,
         'Moose::Util::TypeConstraints'  => 0,
