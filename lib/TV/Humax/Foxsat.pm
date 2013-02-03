@@ -1,6 +1,6 @@
 package TV::Humax::Foxsat;
 
-use 5.006;
+use 5.10.0;
 use strict;
 use warnings;
 
@@ -15,7 +15,6 @@ Version 0.01
 =cut
 
 our $VERSION = '0.01';
-
 
 =head1 SYNOPSIS
 
@@ -40,21 +39,31 @@ our $VERSION = '0.01';
     ( $epg_block1->duration / 60 );
 
   printf "The show description is %s\n", $epg_block->guideInfo;
-  
+
+Hmt files are meta data files used by Humax 
+
 NB: There is no support for modifying and saving hmt data files.
 You should treat the fields as read only.
 
-=cut
+=head1 FIELDS
 
-sub function1 {
-}
+The following fields are avalable in hmt_data
 
-=head2 function2
+Numbers/strings: lastPlay ChanNum progName ChanNameEPG AudioType VideoPID
+                 AudioPID TeletextPID VideoType EPG_Block_count fileName
 
-=cut
+Datetime: startTime endTime
 
-sub function2 {
-}
+Boolean: Freesat Viewed Locked HiDef Encrypted CopyProtect Locked Subtitles
+
+The field EPG_blocks contains the list of electronic program guide data
+blocks that are instances of TV::Humax::Foxsat::epg_data
+
+The following fields are avalable in epg_data
+
+startTime duration progName guideInfo guideFlag guideBlockLen
+
+guideInfo is the Long program guide text. Up to 255 bytes
 
 =head1 AUTHOR
 
@@ -62,9 +71,10 @@ sub function2 {
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-tv-humax-foxsat at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=TV-Humax-Foxsat>.  
-I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
+Please report any bugs or feature requests to C<bug-tv-humax-foxsat at rt.cpan.org>,
+or through the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=TV-Humax-Foxsat>.  
+I will be notified, and then you'll automatically be notified of progress on
+your bug as I make changes.
 
 I would also be interested in any suggestions for improvement you might have.
 

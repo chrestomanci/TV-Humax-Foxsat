@@ -5,6 +5,9 @@ use namespace::autoclean;
 use DateTime;
 use Moose;
 use Moose::Util::TypeConstraints;
+use TV::Humax::Foxsat;
+
+our $VERSION = $TV::Humax::Foxsat::VERSION;
 
 use Trait::Attribute::Derived Unpack => {
     fields    => { 'unpacker' => 'Str' },
