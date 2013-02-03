@@ -14,3 +14,4 @@ t/02-epg_data.t
 t/boilerplate.t
 t/Downton_Abbey_20121007_2159.hmt	# An example data file to run the tests with.
 t/manifest.t
+COPYING
