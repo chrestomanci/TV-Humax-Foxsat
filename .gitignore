@@ -1,0 +1,16 @@
+*~
+*.orig
+*.bak
+/.prove
+/perltidy.LOG
+/.includepath
+/.project
+/cover_db/
+profile-*.out
+nytprof/
+nytprof.out
+cover_db
+coverage_AT_*
+covered
+*.old
+/TV-Humax-Foxsat-*

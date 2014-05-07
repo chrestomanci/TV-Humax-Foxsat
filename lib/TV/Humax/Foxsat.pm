@@ -8,13 +8,9 @@ use warnings;
 
 TV::Humax::Foxsat - Parse metadata files from your Humax satellite TV receiver.
 
-=head1 VERSION
-
-Version 0.03
-
 =cut
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head1 SYNOPSIS
 
@@ -22,7 +18,7 @@ our $VERSION = '0.03';
 
   my $hmt_data = new TV::Humax::Foxsat::hmt_data();
   $hmt_data->raw_from_file('/path/to/TV Show_20121007_2159.hmt');
-  
+
   printf "Recording %s ran from %s till %s on %s (channel %d).\n",
     $hmt_data->progName,
     $hmt_data->startTime,
@@ -32,7 +28,7 @@ our $VERSION = '0.03';
 
   my @epg_records = @{ $hmt_data->EPG_blocks() };
   my $epg_block = pop @epg_records;
-  
+
   printf "The last show in the recording was of %s starting at %s for %d minutes.\n",
     $epg_block->progName,
     $epg_block->startTime,
@@ -40,14 +36,14 @@ our $VERSION = '0.03';
 
   printf "The show description is %s\n", $epg_block->guideInfo;
 
-Hmt files are meta data files used by Humax 
+Hmt files are meta data files used by Humax
 
 NB: There is no support for modifying and saving hmt data files.
 You should treat the fields as read only.
 
 =head1 FIELDS
 
-The following fields are avalable in hmt_data
+The following fields are available in hmt_data
 
 Numbers/strings: lastPlay ChanNum progName ChanNameEPG AudioType VideoPID
                  AudioPID TeletextPID VideoType EPG_Block_count fileName
@@ -65,6 +61,13 @@ startTime duration progName guideInfo guideFlag guideBlockLen
 
 guideInfo is the Long program guide text. Up to 255 bytes
 
+=head1 SUPPORTED DEVICES
+
+This module designed to work with metadata files from Humax's Foxsat receiver,
+it is known not to work with files from the HDR-FOX T2 receiver. Other devices
+are untested, and may or may not work. Please report any success or otherwise
+with other devices.
+
 =head1 AUTHOR
 
 "spudsoup", C<< <"spudsoup at cpan.org"> >>
@@ -72,7 +75,7 @@ guideInfo is the Long program guide text. Up to 255 bytes
 =head1 BUGS
 
 Please report any bugs or feature requests to C<bug-tv-humax-foxsat at rt.cpan.org>,
-or through the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=TV-Humax-Foxsat>.  
+or through the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=TV-Humax-Foxsat>.
 I will be notified, and then you'll automatically be notified of progress on
 your bug as I make changes.
 
