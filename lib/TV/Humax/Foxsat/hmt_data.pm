@@ -14,7 +14,7 @@ use Moose::Util::TypeConstraints;
 use TV::Humax::Foxsat::epg_data;
 use TV::Humax::Foxsat;
 
-our $VERSION = $TV::Humax::Foxsat::VERSION;
+# VERSION
 
 use Trait::Attribute::Derived Unpack => {
     source    => 'rawDataBlock',

@@ -13,7 +13,7 @@ use Moose;
 use Moose::Util::TypeConstraints;
 use TV::Humax::Foxsat;
 
-our $VERSION = $TV::Humax::Foxsat::VERSION;
+# VERSION
 
 use Trait::Attribute::Derived Unpack => {
     fields    => { 'unpacker' => 'Str' },
